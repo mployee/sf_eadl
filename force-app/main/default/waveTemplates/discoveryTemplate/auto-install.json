@@ -2,7 +2,7 @@
   "hooks": [
     {
       "type": "PackageInstall",
-      "requestName": "Installing/Upgrading Demo App"
+      "requestName": "discoveryTemplate"
     }
   ],
   "configuration": {
