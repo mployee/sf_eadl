@@ -1,10 +1,7 @@
 {
-  "name": "discoveryTemplate",
-  "label": "discoveryTemplate",
-  "description": "Analytics template with one simple dashboard",
-  "featuredAssets": {},
-  "shares": [{
-    "accessType": "View",
-    "shareType": "Organization"
-  }]
+  "name" : "discoveryTemplate",
+  "label" : "Work Discovery",
+  "description" : "Analytics template with one simple dashboard",
+  "featuredAssets" : { },
+  "shares" : [ ]
 }

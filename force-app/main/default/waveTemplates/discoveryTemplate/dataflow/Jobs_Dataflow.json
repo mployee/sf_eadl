@@ -1,0 +1,115 @@
+{
+  "isDeletable": true,
+  "longRunningAlertInMins": "",
+  "notificationLevel": "",
+  "workflowDefinition": {
+    "sfdcDigest_Contact": {
+      "action": "sfdcDigest",
+      "parameters": {
+        "fields": [
+          {"name": "Email"},
+          {"name": "Name"},
+          {"name": "Job_Category__c"},
+          {"name": "Job_Sub_Category__c"},
+          {"name": "Job_Title__c"},
+          {"name": "Level_of_Experience__c"},
+          {"name": "MailingCity"},
+          {"name": "MailingCountry"},
+          {"name": "MailingState"},
+          {"name": "Salary_per_year__c"},
+          {"name": "Status__c"},
+          {"name": "Id"}
+        ],
+        "object": "Contact"
+      }
+    },
+    "augment_Contact": {
+      "action": "augment",
+      "parameters": {
+        "right_key": ["Id"],
+        "left": "augment_Job__c_Account",
+        "left_key": ["Employee__c"],
+        "right_select": [
+          "Email",
+          "Name",
+          "Job_Category__c",
+          "Job_Sub_Category__c",
+          "Job_Title__c",
+          "Level_of_Experience__c",
+          "MailingCity",
+          "MailingCountry",
+          "MailingState",
+          "Salary_per_year__c",
+          "Status__c"
+        ],
+        "right": "sfdcDigest_Contact",
+        "relationship": "Employee__c"
+      }
+    },
+    "sfdcDigest_Account": {
+      "action": "sfdcDigest",
+      "parameters": {
+        "fields": [
+          {"name": "Name"},
+          {"name": "Id"}
+        ],
+        "object": "Account"
+      }
+    },
+    "register_Jobs": {
+      "action": "sfdcRegister",
+      "parameters": {
+        "name": "Jobs",
+        "alias": "${App.Datasets.Jobs_tp.FullyQualifiedName}",
+        "source": "augment_Contact"
+      }
+    },
+    "sfdcDigest_Job__c": {
+      "action": "sfdcDigest",
+      "parameters": {
+        "fields": [
+          {"name": "City__c"},
+          {"name": "Closed_Date__c"},
+          {"name": "Country__c"},
+          {"name": "Job_Category__c"},
+          {"name": "Name"},
+          {"name": "Job_Source__c"},
+          {"name": "Job_Sub_Category__c"},
+          {"name": "Job_Type__c"},
+          {"name": "Level_of_Experience__c"},
+          {"name": "Main_technology__c"},
+          {"name": "Number_of_applicants__c"},
+          {"name": "Published_Date__c"},
+          {"name": "Published_on__c"},
+          {"name": "Salary_per_year__c"},
+          {"name": "State_Province__c"},
+          {"name": "Status__c"},
+          {"name": "Type_of_employment__c"},
+          {"name": "Account__c"},
+          {"name": "Employee__c"},
+          {"name": "Company_Name__c"}
+        ],
+        "object": "Job__c"
+      }
+    },
+    "augment_Job__c_Account": {
+      "action": "augment",
+      "parameters": {
+        "right_key": ["Id"],
+        "left": "sfdcDigest_Job__c",
+        "left_key": ["Account__c"],
+        "right_select": ["Name"],
+        "right": "sfdcDigest_Account",
+        "relationship": "Account__c"
+      }
+    }
+  },
+  "DataflowType": "USER",
+  "_type": "dataflow",
+  "name": "Jobs_Dataflow",
+  "MasterLabel": "Jobs Dataflow",
+  "_url": "/insights/internal_api/v1.0/esObject/workflow//json",
+  "_uid": "",
+  "nextRun": "",
+  "WorkflowStatus": "Inactive"
+}

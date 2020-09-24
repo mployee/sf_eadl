@@ -1,49 +1,82 @@
 {
-  "templateType": "embeddedapp",
-  "autoInstallDefinition": "auto-install.json",
-  "label": "discoveryTemplate",
-  "name": "discoveryTemplate",
-  "description": "",
-  "assetVersion": 48.0,
-  "variableDefinition": "variables.json",
-  "uiDefinition": "ui.json",
-  "rules": [
+  "templateType" : "embeddedapp",
+  "label" : "discoveryTemplate",
+  "name" : "discoveryTemplate",
+  "assetVersion" : 48.0,
+  "variableDefinition" : "variables.json",
+  "uiDefinition" : "ui.json",
+  "autoInstallDefinition" : "auto-install.json",
+  "rules" : [
     {
-      "type": "templateToApp",
-      "file": "template-to-app-rules.json"
+      "type" : "templateToApp",
+      "file" : "template-to-app-rules.json"
     },
     {
-      "type": "appToTemplate",
-      "file": "app-to-template-rules.json"
+      "type" : "appToTemplate",
+      "file" : "app-to-template-rules.json"
     }
   ],
-  "releaseInfo": {
-    "templateVersion": "1.0",
-    "notesFile": "releaseNotes.html"
+  "releaseInfo" : {
+    "templateVersion" : "1.6",
+    "notesFile" : "releaseNotes.html"
   },
-  "folderDefinition": "folder.json",
-  "externalFiles": [],
-  "lenses": [],
-  "dashboards": [
+  "folderDefinition" : "folder.json",
+  "externalFiles" : [ ],
+  "lenses" : [ ],
+  "dashboards" : [
     {
-      "label": "discoveryTemplateDashboard",
-      "name": "discoveryTemplateDashboard_tp",
-      "condition": "${Variables.Overrides.createAllDashboards}",
-      "file": "dashboards/discoveryTemplateDashboard.json"
+      "label" : "Jobs Discovery for Candidate",
+      "name" : "Jobs_Discovery_for_Candidate_tp",
+      "condition" : "${Variables.Overrides.createAllDashboards}",
+      "file" : "dashboards/Jobs_Discovery_for_Candidate.json"
+    },
+    {
+      "label" : "Jobs Discovery for Recruiter",
+      "name" : "Jobs_Discovery_tp",
+      "condition" : "${Variables.Overrides.createAllDashboards}",
+      "file" : "dashboards/Jobs_Discovery.json"
     }
   ],
-  "eltDataflows": [],
-  "datasetFiles": [],
-  "imageFiles": [],
-  "extendedTypes": {},
-  "templateDependencies": [],
-  "icons": {
-    "appBadge": {
-      "name": "16.png"
+  "eltDataflows" : [
+    {
+      "label" : "Jobs Dataflow",
+      "name" : "Jobs_Dataflow",
+      "condition" : "${Variables.Overrides.createDataflow}",
+      "file" : "dataflow/Jobs_Dataflow.json"
     },
-    "templateBadge": {
-      "name": "default.png"
+    {
+      "label" : "Skills Dataflow",
+      "name" : "Skills_Dataflow",
+      "condition" : "${Variables.Overrides.createDataflow}",
+      "file" : "dataflow/Skills_Dataflow.json"
+    }
+  ],
+  "recipes" : [ ],
+  "datasetFiles" : [
+    {
+      "label" : "Jobs",
+      "name" : "Jobs_tp",
+      "condition" : "${Variables.Overrides.createAllDatasetFiles}",
+      "userXmd" : "dataset_files/Jobs_XMD.json"
     },
-    "templatePreviews": []
+    {
+      "label" : "Skills",
+      "name" : "Skills_tp",
+      "condition" : "${Variables.Overrides.createAllDatasetFiles}",
+      "userXmd" : "dataset_files/Skills_XMD.json"
+    }
+  ],
+  "storedQueries" : [ ],
+  "imageFiles" : [ ],
+  "extendedTypes" : { },
+  "templateDependencies" : [ ],
+  "icons" : {
+    "appBadge" : {
+      "name" : "16.png"
+    },
+    "templateBadge" : {
+      "name" : "default.png"
+    },
+    "templatePreviews" : [ ]
   }
 }

@@ -1,0 +1,80 @@
+{
+  "isDeletable": true,
+  "longRunningAlertInMins": "",
+  "notificationLevel": "",
+  "workflowDefinition": {
+    "sfdcDigest_Skill_Library__c": {
+      "action": "sfdcDigest",
+      "parameters": {
+        "fields": [
+          {"name": "Name"},
+          {"name": "Id"}
+        ],
+        "object": "Skill_Library__c"
+      }
+    },
+    "augment_Skill_Library__c": {
+      "action": "augment",
+      "parameters": {
+        "right_key": ["Id"],
+        "left": "augment_Skill__c_Job__c",
+        "left_key": ["Skill_Library__c"],
+        "right_select": ["Name"],
+        "right": "sfdcDigest_Skill_Library__c",
+        "relationship": "Skill_Library__c"
+      }
+    },
+    "register_Skills": {
+      "action": "sfdcRegister",
+      "parameters": {
+        "name": "Skills",
+        "alias": "${App.Datasets.Skills_tp.FullyQualifiedName}",
+        "source": "augment_Skill_Library__c"
+      }
+    },
+    "sfdcDigest_Job__c": {
+      "action": "sfdcDigest",
+      "parameters": {
+        "fields": [
+          {"name": "Main_technology__c"},
+          {"name": "Id"},
+          {"name": "Status__c"}
+        ],
+        "object": "Job__c"
+      }
+    },
+    "sfdcDigest_Skill__c": {
+      "action": "sfdcDigest",
+      "parameters": {
+        "fields": [
+          {"name": "Skill_Library_Name__c"},
+          {"name": "Job__c"},
+          {"name": "Skill_Library__c"}
+        ],
+        "object": "Skill__c"
+      }
+    },
+    "augment_Skill__c_Job__c": {
+      "action": "augment",
+      "parameters": {
+        "right_key": ["Id"],
+        "left": "sfdcDigest_Skill__c",
+        "left_key": ["Job__c"],
+        "right_select": [
+          "Main_technology__c",
+          "Status__c"
+        ],
+        "right": "sfdcDigest_Job__c",
+        "relationship": "Job__c"
+      }
+    }
+  },
+  "DataflowType": "USER",
+  "_type": "dataflow",
+  "name": "Skills_Dataflow",
+  "MasterLabel": "Skills Dataflow",
+  "_url": "/insights/internal_api/v1.0/esObject/workflow//json",
+  "_uid": "",
+  "nextRun": "",
+  "WorkflowStatus": "Inactive"
+}
