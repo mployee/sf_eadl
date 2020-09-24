@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>In the office</fullName>
+        <default>false</default>
+        <label>In the office</label>
+    </customValue>
+    <customValue>
+        <fullName>Remotely</fullName>
+        <default>false</default>
+        <label>Remotely</label>
+    </customValue>
+    <masterLabel>Job Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

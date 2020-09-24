@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AWS</fullName>
+        <default>false</default>
+        <label>AWS</label>
+    </customValue>
+    <customValue>
+        <fullName>Blockchain</fullName>
+        <default>false</default>
+        <label>Blockchain</label>
+    </customValue>
+    <customValue>
+        <fullName>Mendix</fullName>
+        <default>false</default>
+        <label>Mendix</label>
+    </customValue>
+    <customValue>
+        <fullName>Outsystems</fullName>
+        <default>false</default>
+        <label>Outsystems</label>
+    </customValue>
+    <customValue>
+        <fullName>Quantum Computing</fullName>
+        <default>false</default>
+        <label>Quantum Computing</label>
+    </customValue>
+    <customValue>
+        <fullName>Salesforce</fullName>
+        <default>false</default>
+        <label>Salesforce</label>
+    </customValue>
+    <masterLabel>Main technology</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
